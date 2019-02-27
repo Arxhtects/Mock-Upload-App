@@ -1,0 +1,361 @@
+$transition:    all 0.5s ease-in-out
+$lightWhite:    #9e9e9e
+$from:          #C6426E
+$to:            #642B73
+$dark:          #090909
+* 
+    padding: 0
+    margin: 0 auto
+    box-sizing: border-box
+
+html, body 
+    overflow: hidden
+    font-family: 'Montserrat', sans-serif
+    background: $to
+    background: -webkit-linear-gradient(to top, $from, $to)
+    background: linear-gradient(to top, $from, $to)
+
+/* width */
+::-webkit-scrollbar 
+    width: 5px
+
+/* Track */
+::-webkit-scrollbar-track 
+    background: #f1f1f1
+    border-radius: 20px
+ 
+/* Handle */
+::-webkit-scrollbar-thumb 
+    background: #888
+    border-radius: 20px
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover 
+    background: #555
+
+#p1 
+    display: none
+
+#settings 
+    position: fixed
+    z-index: 999999
+    right: 20px
+    bottom: 20px
+    svg
+        cursor: pointer
+        transition: $transition
+        &:hover
+            transform: rotate(80deg)
+        &.rotate
+            transform: rotate(360deg)
+
+.settings_div
+    transition: $transition
+    width: 100%
+    padding: 20px
+    position: fixed
+    bottom: -20vh
+    z-index: 99999
+    height: 80px
+    background: $dark
+    &.moveup
+        bottom: 0vh
+    .container 
+        transition: $transition
+        color: white !important
+        position: relative
+        p
+            position: absolute
+            width: 100%
+            left: 70px
+            display: inline-table
+        input
+            opacity: 0
+        &:hover input ~ .checkmark 
+            transition: $transition
+            background-color: #ccc
+        input:checked ~ .checkmark 
+                transition: $transition
+                background: $to
+                background: -webkit-linear-gradient(to top, $from, $to)
+                background: linear-gradient(to top, $from, $to)
+        input:checked ~ .checkmark:after 
+            display: block
+        .checkmark 
+            cursor: pointer
+            border-radius: 50%
+            position: absolute
+            top: 8px
+            left: 0
+            height: 25px
+            width: 25px
+            background-color: #eee
+            &:after 
+                content: ""
+                position: absolute
+                display: none
+                left: 9px
+                top: 5px
+                width: 5px
+                height: 10px
+                border: solid white
+                border-width: 0 3px 3px 0
+                transform: rotate(45deg)
+
+            
+
+.search 
+    cursor: pointer
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 40px
+    font-size: 20px
+
+.copied_note 
+    z-index: 9999
+    width: 100%
+    padding: 10px
+    position: fixed
+    bottom: -20vh
+    background: $dark
+    transition: $transition
+    text-align: center
+    p 
+        color: white
+        font-size: 18px
+        font-weight: 100
+    i
+        color: white
+        font-size: 20px
+        position: relative
+        top: 2px
+        margin-left: 10px
+    &.show
+        bottom: 0
+
+.header
+    z-index: 9999
+    position: fixed
+    -webkit-app-region: drag
+    background: white
+    padding: 10px
+    width: 100%
+    .app-title 
+        position: absolute
+        left: 50%
+        transform: translateX(-50%)
+        font-weight: bold
+        font-size: 15px
+        color: $lightWhite
+    #back_up 
+        color: $lightWhite
+        transition: $transition
+        -webkit-app-region: no-drag
+        &.move
+            color: black
+            cursor: pointer
+        &.rotate
+            transform: rotate(90deg)
+            color: black
+            cursor: pointer
+
+    #close_app
+        -webkit-app-region: no-drag
+        position: absolute
+        right: 10px
+        font-size: 28px
+        top: 6px
+        cursor: pointer
+        color: $lightWhite
+        background-color: $lightWhite
+        background-image: -webkit-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+        background-image: -moz-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+        background-image: -webkit-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+        background-image: linear-gradient(to right, $from 0%, $to 50%, transparent 50%)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        background-position: 100% 0
+        background-size: 200% 200%
+        -webkit-transition: $transition
+        -webkit-background-clip: text
+        &:hover 
+            background-position: 0 0
+            color: transparent
+            transition: $transition
+
+.wrapper 
+    .inner
+        .bubbleback
+            width: 90%
+            position: relative
+            background: white
+            padding-top: 20px
+            border-radius: 10px
+
+        #FolderName 
+            width: 100%
+            position: relative
+            left: 0
+            top: 0
+            transition: $transition
+            height: 100vh
+            input
+                width: 90%
+                left: 50%
+                position: absolute
+                transform: translate(-50%, -50%)
+                top: 50%
+                padding: 20px
+                border-radius: 7px
+                text-align: center
+                font-size: 22px
+                border: 10px
+            &.move 
+                left: -100vw
+            &.moveup
+                top: -100vh
+        
+        #data
+            padding: 20px
+            border-radius: 10px
+            transition: $transition
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            top: 100vh
+            height: 450px
+            width: 90%
+            background: white
+            &.moveup
+                top: 14vh
+            .no-hist
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                width: 90%
+                text-align: center
+                &.remove
+                    display: none
+                h3
+                    font-size: 30px
+                    margin-bottom: 20px
+                i
+                    font-size: 60px
+                    background: $from        
+                    background-image: -webkit-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+                    background-image: -moz-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+                    background-image: -webkit-linear-gradient(left, $from 0%, $to 50%, transparent 50%)
+                    background-image: linear-gradient(to right, $from 0%, $to 50%, transparent 50%)
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+                    background-size: 200% 200%
+                    -webkit-background-clip: text
+                    background-position: 0 0
+                    color: transparent
+            .history_div
+                display: none
+                width: 100%
+                i
+                    font-size: 22px
+                    cursor: pointer
+                    display: inline-block
+                h3 
+                    display: inline-block
+                    position: relative
+                    left: 65px
+                &.show
+                    display: block
+                .history_container 
+                    width: 100%
+                    padding: 20px 0    
+                    height: 370px
+                    overflow-y: scroll
+                .hist_val
+                    margin-bottom: 10px
+                    font-size: 18px
+                    cursor: pointer
+                .info
+                    text-align: center
+                    font-size: 14px
+                    font-weight: bold
+                    margin-top: 5px
+
+        .iframe_wrapper 
+            left: 100vw
+            position: relative
+            top: -143vh
+            transition: $transition
+            width: 90%
+            padding: 20px
+            background: white
+            text-align: center
+            border-radius: 10px
+            height: 300px
+            &.move
+                left: 0     
+            iframe 
+                height: 90%
+                width: 90%
+                border: 0
+            .clipboard
+                font-size: 20px
+                display: none
+                cursor: pointer
+                &.show
+                    display: block !important
+                i
+                    font-size: 25px
+                    margin-left: 10px
+                    position: relative
+                    top: 2px
+
+        .main_wrap
+            top: -83vh
+            left: 100vw
+            position: relative
+            transition: $transition
+            &.move
+                left: 0
+            &.movemore
+                left: -100vw !important
+            #upload_button
+                width: 90%
+                position: relative
+                margin: 20px 0
+                cursor: pointer
+                left: 50%
+                transform: translateX(-50%)
+                border: 10px
+                padding: 20px
+                border-radius: 10px
+                font-size: 22px
+            .upload_wrap 
+                cursor: pointer
+                position: relative
+                height: 300px
+                width: 90%
+                border-radius: 7px
+                background: rgba(0,0,0,0.4)
+                text-align: center
+                .upload_text
+                    position: absolute
+                    z-index: 22
+                    left: 50%
+                    top: 50%
+                    transform: translate(-50%, -50%)
+                    i 
+                        font-size: 60px
+                        margin-bottom: 20px
+                    p
+                        font-weigth: bold
+                        font-size: 22px
+                .upload
+                    cursor: pointer
+                    left: 0
+                    padding: 20px
+                    width: 100%
+                    height: 300px
+                    position: absolute
+                    z-index: 2222
+                    opacity: 0

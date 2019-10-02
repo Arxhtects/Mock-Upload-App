@@ -184,6 +184,19 @@ html, body
             color: transparent
             transition: $transition
 
+.defined 
+    &.active 
+        &:after
+        opacity: 0.5
+    &:after
+        position: absolute
+        top:0
+        left:0
+        right:0
+        bottom:0
+        background: smokewhite
+        opacity: 0
+        transition: $transition
 .wrapper 
     .inner
         .bubbleback
